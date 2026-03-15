@@ -9,6 +9,7 @@ html, body, #root, .App {
   color: #23272f;
 }
 
+
 /* Main React container */
 .App {
   height: 100%;
@@ -16,6 +17,10 @@ html, body, #root, .App {
   flex-direction: column;
   text-align: center;
   background: transparent;
+}
+
+.App.dragging-treeview-sidebar {
+  cursor: col-resize;
 }
 
 /* All buttons */ 
@@ -98,10 +103,15 @@ button {
   justify-content: center; /* horizontal center */
 }
 
-.treeview .sidebar:hover {
+.treeview .sidebar.open:hover {
     background: #8e939d;
     cursor: col-resize;
 }
+
+.treeview .sidebar.dragging {
+    background: #8e939d;
+}
+
 
 .treeview .arrows {
   position: absolute;
@@ -122,6 +132,8 @@ button {
 .treeview .arrows svg {
  width: 30px;
  height: 30px;
+ stroke-width: 2px;
+ color: #333;
  transition: transform 0.4s ease;
 }
 

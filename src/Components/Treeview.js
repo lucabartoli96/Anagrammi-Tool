@@ -4,7 +4,7 @@ const Treeview = ({isOpen, width, resizing, onArrowsButtonClick, onSideBarMouseD
 
     return ( 
         <div style={{width: width}} className="treeview">
-            <div className={"sidebar " + (resizing ? "dragging": "")}
+            <div className={"sidebar" + (isOpen ? " open" : "") + (resizing ? " dragging" : "")}
                 onMouseDown={onSideBarMouseDown}>
             </div>
             <button className="arrows" 

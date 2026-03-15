@@ -5,15 +5,13 @@ const arrowPath = [
 const ArrowsIcon = ({ rotate }) => {
   return (
     <svg
-      className= {rotate ? "rotate" : ""}
-      width="24"
-      height="24"
+      className={rotate ? "rotate" : ""}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#000000"
+      stroke="currentColor"
     >
-      <path d={arrowPath[0]} stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d={arrowPath[1]} stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={arrowPath[0]} stroke="currentColor" strokeWidth="current" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={arrowPath[1]} stroke="currentColor" strokeWidth="current" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 };

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Buttonsbar from './Components/Buttonsbar';
 import Treeview from './Components/Treeview';
 import Board from './Components/Board';
-import { renderToStaticMarkup } from 'react-dom/server';
 
 function App() {
 
@@ -29,7 +28,7 @@ function App() {
 
   const handleSidebarMouseDown = (e) => {
     if (treeview.isOpen) {
-      
+
       setDragInfo({
         dragging: 'treeview-sidebar'
       });
@@ -43,6 +42,7 @@ function App() {
       return;
 
     if (dragInfo.dragging === 'letter') {
+
       const newx = e.clientX - dragInfo.correction.x;
       const newy = e.clientY - dragInfo.correction.y;
 
@@ -60,11 +60,9 @@ function App() {
 
     } else if (dragInfo.dragging === 'treeview-sidebar') {
       setTreeview(prev => (
-        {...prev, width: e.clientX}
+        { ...prev, width: e.clientX > 50 ? e.clientX : 50 }
       ))
-    }
-
-
+    } 
 
   }
 
@@ -102,16 +100,18 @@ function App() {
     }
   }, []);
 
+  
+
 
   return (
-    <div className="App"
-      onMouseMove={handleMouseMove}>
+    <div className={'App' + (dragInfo?.dragging === 'treeview-sidebar' ? " dragging-treeview-sidebar" : "")}
+         onMouseMove={handleMouseMove}>
 
       <Buttonsbar />
       <div className="Main">
         <Treeview isOpen={treeview.isOpen}
           width={treeview.isOpen ? treeview.width : 3}
-          resizing = {dragInfo && dragInfo.dragging === 'treeview-sidebar'}
+          resizing={dragInfo && dragInfo.dragging === 'treeview-sidebar'}
           onArrowsButtonClick={handleArrowsButtonClick}
           onSideBarMouseDown={handleSidebarMouseDown} />
         <Board letters={letters}
