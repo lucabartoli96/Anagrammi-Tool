@@ -1,0 +1,164 @@
+
+/* Ensure full height layout */
+html, body, #root, .App {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Inter', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  background: #f6f8fa;
+  color: #23272f;
+}
+
+/* Main React container */
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: transparent;
+}
+
+/* All buttons */ 
+button {
+  user-select: none; /* Standard syntax */
+}
+
+/* Top bar */
+.buttons-bar {
+  background-color: #333;
+  color: white;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 0 20px;
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+/* Title */
+.buttons-bar h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* Button in the bar */
+.buttons-bar button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+}
+
+/* Icon */
+.folder-icon {
+  width: 33px;
+  height: 33px;
+  stroke: white;
+}
+
+.buttons-bar button:hover .folder-icon {
+  opacity: 0.8;
+}
+
+/* Area under the bar */
+.Main {
+  flex: 1;                 /* fills remaining height */
+  display: flex;
+  background: #f0f4f8;
+  overflow: hidden;        /* prevents scroll glitches */
+}
+
+/* Left panel */
+.treeview {
+  width: 210px;
+  background: #e8ecf3;
+  border-right: 1px solid #d1d5db;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.04);
+  padding: 0px;
+}
+
+.treeview .sidebar {
+  width: 10px;
+  height: 100%;
+  float: right;
+  background: #b0b6c3;
+
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+}
+
+.treeview .arrows {
+  position: absolute;
+  top: 45px;
+  width: 30px;
+  height: 30px;
+
+  background: none;
+  border: none;
+
+  padding: 0;
+  cursor: pointer;
+
+  z-index: 100;
+
+}
+
+.treeview .arrows svg {
+ width: 30px;
+ height: 30px;
+ transition: transform 0.4s ease;
+}
+
+.treeview .arrows svg.rotate{
+ rotate: 180deg;
+ transform-origin: center;
+}
+
+.treeview .arrows svg:hover {
+ transform: scale(120%);
+}
+
+/* Main workspace */
+.board {
+  position: relative;
+  flex: 1;
+  background: #fff;
+  padding: 24px 32px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px 0 rgba(60,72,88,0.07);
+}
+
+
+.board .letter {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: #b7d0e8;
+  border: 2px solid #5a6d8a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #23272f;
+  user-select: none;
+  box-shadow: 0 2px 8px 0 rgba(60,72,88,0.08);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.board .letter:hover {
+  background: #a0c4e3;
+  box-shadow: 0 4px 16px 0 rgba(60,72,88,0.13);
+}
