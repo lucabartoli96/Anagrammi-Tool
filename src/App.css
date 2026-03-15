@@ -88,7 +88,7 @@ button {
 }
 
 .treeview .sidebar {
-  width: 10px;
+  width: 3px;
   height: 100%;
   float: right;
   background: #b0b6c3;
@@ -96,6 +96,11 @@ button {
   display: flex;
   align-items: center;     /* vertical center */
   justify-content: center; /* horizontal center */
+}
+
+.treeview .sidebar:hover {
+    background: #8e939d;
+    cursor: col-resize;
 }
 
 .treeview .arrows {

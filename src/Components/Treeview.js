@@ -1,33 +1,19 @@
-import { useState } from "react";
 import ArrowsIcon from "./svg/ArrowsIcon";
 
-const Treeview = () => {
-
-    const [open, setOpen] = useState(true);
-    const [width, setWidth] = useState(210)
-
-    const arrowClick = (e) => {
-
-        if (open) {
-            setWidth(10);
-            setOpen(false);
-        } else {
-            setWidth(210)
-            setOpen(true);
-        }
-
-    }
+const Treeview = ({isOpen, width, resizing, onArrowsButtonClick, onSideBarMouseDown}) => {
 
     return ( 
         <div style={{width: width}} className="treeview">
-            <div className="sidebar">
+            <div className={"sidebar " + (resizing ? "dragging": "")}
+                onMouseDown={onSideBarMouseDown}>
             </div>
             <button className="arrows" 
-                    onClick={arrowClick}
+                    onClick={onArrowsButtonClick}
+    
                     style={{
                         left: width+10
                     }}>
-                <ArrowsIcon rotate={!open}/>
+                <ArrowsIcon rotate={!isOpen}/>
             </button>
             
         </div>
