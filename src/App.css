@@ -68,7 +68,8 @@ button {
 .folder-icon {
   width: 33px;
   height: 33px;
-  stroke: white;
+  stroke-width: 2px;
+  color: white;
 }
 
 .buttons-bar button:hover .folder-icon {

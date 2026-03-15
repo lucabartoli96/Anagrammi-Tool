@@ -10,8 +10,8 @@ const ArrowsIcon = ({ rotate }) => {
       fill="none"
       stroke="currentColor"
     >
-      <path d={arrowPath[0]} stroke="currentColor" strokeWidth="current" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d={arrowPath[1]} stroke="currentColor" strokeWidth="current" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={arrowPath[0]} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={arrowPath[1]} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 };

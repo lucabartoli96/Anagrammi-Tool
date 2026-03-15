@@ -3,8 +3,19 @@ const folderPath = "M3 8.2C3 7.07989 3 6.51984 3.21799 6.09202C3.40973 5.71569 3
 
 const FolderIcon = () => {
     return (
-        <svg className="folder-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
-            <path d={folderPath} stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+        <svg
+            className="folder-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+        >
+            <path
+                d={folderPath}
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
         </svg>
     );
 }
