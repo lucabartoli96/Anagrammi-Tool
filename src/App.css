@@ -19,7 +19,7 @@ html, body, #root, .App {
   background: transparent;
 }
 
-.App.dragging-treeview-sidebar {
+.App.dragging-sidebar-resizebar {
   cursor: col-resize;
 }
 
@@ -85,7 +85,7 @@ button {
 }
 
 /* Left panel */
-.treeview {
+.sidebar {
   width: 210px;
   background: #e8ecf3;
   border-right: 1px solid #d1d5db;
@@ -93,7 +93,7 @@ button {
   padding: 0px;
 }
 
-.treeview .sidebar {
+.sidebar .resizebar {
   width: 3px;
   height: 100%;
   float: right;
@@ -104,17 +104,17 @@ button {
   justify-content: center; /* horizontal center */
 }
 
-.treeview .sidebar.open:hover {
+.sidebar .resizebar.open:hover {
     background: #8e939d;
     cursor: col-resize;
 }
 
-.treeview .sidebar.dragging {
+.sidebar .resizebar.dragging {
     background: #8e939d;
 }
 
 
-.treeview .arrows {
+.sidebar .arrows {
   position: absolute;
   top: 45px;
   width: 30px;
@@ -130,7 +130,7 @@ button {
 
 }
 
-.treeview .arrows svg {
+.sidebar .arrows svg {
  width: 30px;
  height: 30px;
  stroke-width: 2px;
@@ -138,13 +138,20 @@ button {
  transition: transform 0.4s ease;
 }
 
-.treeview .arrows svg.rotate{
+.sidebar .arrows svg.rotate{
  rotate: 180deg;
  transform-origin: center;
 }
 
-.treeview .arrows svg:hover {
+.sidebar .arrows svg:hover {
  transform: scale(120%);
+}
+
+/* Treeview content */
+.treeview {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
 }
 
 /* Main workspace */

@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState, useRef } from 'react';
 import Buttonsbar from './Components/Buttonsbar';
+import Sidebar from './Components/Sidebar';
 import Treeview from './Components/Treeview';
 import Board from './Components/Board';
 
@@ -17,21 +18,20 @@ function App() {
   ]);
 
   /* Treeview State */
-
-  const [treeview, setTreeview] = useState({
+  const [sidebar, setSidebar] = useState({
     isOpen: true,
     width: 210
   });
 
   const handleArrowsButtonClick = (e) => {
-    setTreeview(prev => ({ ...prev, isOpen: !prev.isOpen }));
+    setSidebar(prev => ({ ...prev, isOpen: !prev.isOpen }));
   }
 
-  const handleSidebarMouseDown = (e) => {
-    if (treeview.isOpen) {
+  const handleResizeBarMouseDown = (e) => {
+    if (sidebar.isOpen) {
 
       setDragInfo({
-        dragging: 'treeview-sidebar'
+        dragging: 'sidebar-resizebar'
       });
     }
   }
@@ -65,9 +65,9 @@ function App() {
         );
       });
 
-    } else if (dragInfo.dragging === 'treeview-sidebar') {
-      setTreeview(prev => (
-        { ...prev, width: e.clientX > 50 ? e.clientX : 50 }
+    } else if (dragInfo.dragging === 'sidebar-resizebar') {
+      setSidebar(prev => (
+        { ...prev, width: Math.min(Math.max(e.clientX, 50), 300) }
       ))
     }
 
@@ -166,16 +166,18 @@ function App() {
 
 
   return (
-    <div className={'App' + (dragInfo?.dragging === 'treeview-sidebar' ? " dragging-treeview-sidebar" : "")}
+    <div className={'App' + (dragInfo?.dragging === 'sidebar-resizebar' ? " dragging-sidebar-resizebar" : "")}
          onMouseMove={handleMouseMove}>
 
       <Buttonsbar />
       <div className="Main">
-        <Treeview isOpen={treeview.isOpen}
-          width={treeview.isOpen ? treeview.width : 3}
-          resizing={dragInfo && dragInfo.dragging === 'treeview-sidebar'}
+        <Sidebar isOpen={sidebar.isOpen}
+          width={sidebar.isOpen ? sidebar.width : 3}
+          resizing={dragInfo && dragInfo.dragging === 'sidebar-resizebar'}
           onArrowsButtonClick={handleArrowsButtonClick}
-          onSideBarMouseDown={handleSidebarMouseDown} />
+          onResizeBarMouseDown={handleResizeBarMouseDown}>
+          <Treeview />
+        </Sidebar>
         <Board letters={letters}
           onLetterMouseDown={handleLetterMouseDown} />
       </div>
